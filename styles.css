@@ -37,6 +37,10 @@ h1 {
     border: 2px solid crimson;
     padding: 0.5em; }
 
+@supports (touch-action: auto) {
+  h1::after {
+    display: none; } }
+
 h2 {
   margin-bottom: 1.5em; }
   h2::after {
@@ -92,27 +96,45 @@ section div:nth-child(2) {
   background-image: linear-gradient(to bottom, #f1c40f 0%, #f1c40f 50%, #2ecc71 50%, #2ecc71 100%); }
 
 @supports (touch-action: auto) {
-  h1::after {
-    display: none; }
   .auto {
     -ms-touch-action: auto;
         touch-action: auto; }
     .auto ~ h2::after {
-      display: none; }
+      display: none; } }
+
+@supports (touch-action: none) {
   .none {
     -ms-touch-action: none;
         touch-action: none; }
     .none ~ h2::after {
-      display: none; }
+      display: none; } }
+
+@supports (touch-action: manipulation) {
+  .manipulation {
+    -ms-touch-action: manipulation;
+        touch-action: manipulation; }
+    .manipulation ~ h2::after {
+      display: none; } }
+
+@supports (touch-action: pan-x) {
   .pan-x {
     -ms-touch-action: pan-x;
         touch-action: pan-x; }
     .pan-x ~ h2::after {
-      display: none; }
+      display: none; } }
+
+@supports (touch-action: pan-y) {
   .pan-y {
     -ms-touch-action: pan-y;
         touch-action: pan-y; }
     .pan-y ~ h2::after {
+      display: none; } }
+
+@supports (touch-action: pan-left) {
+  .pan-left {
+    -ms-touch-action: pan-left;
+        touch-action: pan-left; }
+    .pan-left ~ h2::after {
       display: none; } }
 
 @supports (touch-action: pan-right) {
@@ -120,22 +142,23 @@ section div:nth-child(2) {
     -ms-touch-action: pan-right;
         touch-action: pan-right; }
     .pan-right ~ h2::after {
-      display: none; }
-  .pan-left {
-    -ms-touch-action: pan-left;
-        touch-action: pan-left; }
-    .pan-left ~ h2::after {
-      display: none; }
+      display: none; } }
+
+@supports (touch-action: pan-up) {
   .pan-up {
     -ms-touch-action: pan-up;
         touch-action: pan-up; }
     .pan-up ~ h2::after {
-      display: none; }
+      display: none; } }
+
+@supports (touch-action: pan-down) {
   .pan-down {
     -ms-touch-action: pan-down;
         touch-action: pan-down; }
     .pan-down ~ h2::after {
-      display: none; }
+      display: none; } }
+
+@supports (touch-action: pinch-zoom) {
   .pinch-zoom {
     -ms-touch-action: pinch-zoom;
         touch-action: pinch-zoom; }

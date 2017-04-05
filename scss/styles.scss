@@ -1,3 +1,16 @@
+$values: (
+  auto,
+  none,
+  manipulation,
+  pan-x,
+  pan-y,
+  pan-left,
+  pan-right,
+  pan-up,
+  pan-down,
+  pinch-zoom
+);
+
 html {
   box-sizing: border-box;
   height: 100%;
@@ -39,6 +52,12 @@ h1 {
     color: maroon;
     border: 2px solid crimson;
     padding: 0.5em;
+  }
+}
+
+@supports (touch-action: auto) {
+  h1::after {
+    display: none;
   }
 }
 
@@ -94,82 +113,14 @@ section div:nth-child(1) {
   background-image: linear-gradient(to bottom, #f1c40f 0%, #f1c40f 50%, #2ecc71 50%, #2ecc71 100%);
  }
 
-@supports (touch-action: auto) {
-  h1::after {
-    display: none;
-  }
+@each $value in $values {
+  @supports (touch-action: #{$value}) {
+    .#{$value} {
+      touch-action: #{$value};
 
-  .auto {
-    touch-action: auto;
-
-    ~ h2::after {
-      display: none;
-    }
-  }
-
-  .none {
-    touch-action: none;
-
-    ~ h2::after {
-      display: none;
-    }
-  }
-
-  .pan-x {
-    touch-action: pan-x;
-
-    ~ h2::after {
-      display: none;
-    }
-  }
-
-  .pan-y {
-    touch-action: pan-y;
-
-    ~ h2::after {
-      display: none;
-    }
-  }
-}
-
-@supports (touch-action: pan-right) {
-  .pan-right {
-    touch-action: pan-right;
-
-    ~ h2::after {
-      display: none;
-    }
-  }
-
-  .pan-left {
-    touch-action: pan-left;
-
-    ~ h2::after {
-      display: none;
-    }
-  }
-
-  .pan-up {
-    touch-action: pan-up;
-
-    ~ h2::after {
-      display: none;
-    }
-  }
-
-  .pan-down {
-    touch-action: pan-down;
-
-    ~ h2::after {
-      display: none;
-    }
-  }
-
-  .pinch-zoom {
-    touch-action: pinch-zoom;
-
-    ~ h2::after {
-      display: none;
+      ~ h2::after {
+        display: none;
+      }
     }
   }
 }
